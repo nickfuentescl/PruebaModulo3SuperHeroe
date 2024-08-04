@@ -1,7 +1,8 @@
 let cajaSuperHeroe = document.querySelector('#caja')
 let botonSuperHeroe = document.querySelector('#button')
 
-botonSuperHeroe.addEventListener('click', function () {
+function buscarSuperHeroe() {
+
     let capturaSuperHeroe = cajaSuperHeroe.value
 
     $.ajax({
@@ -61,6 +62,12 @@ botonSuperHeroe.addEventListener('click', function () {
     });
 
 
-})
+}
 
+botonSuperHeroe.addEventListener('click', buscarSuperHeroe);
 
+cajaSuperHeroe.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+        buscarSuperHeroe();
+    }
+});
