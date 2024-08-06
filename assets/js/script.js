@@ -1,16 +1,34 @@
 let cajaSuperHeroe = document.querySelector('#caja')
 let botonSuperHeroe = document.querySelector('#button')
+let expresionRegular = /^[1-9]\d*$/;
+let porfavorIngresasolonumeros = document.querySelector('#error')
+
 
 function buscarSuperHeroe() {
 
     let capturaSuperHeroe = cajaSuperHeroe.value
+    if (capturaSuperHeroe > 731) {
+        porfavorIngresasolonumeros.innerHTML =
+    `<div style="display: flex; align-items: center;" class="mt-3">
+    <img style="width: 60px;" src="./assets/img/error.png" alt="">
+    <p>Error: Superaste el rango, no existen más SuperHeroes</p>
+    </div>`
+        return;
+    } if (expresionRegular.test(capturaSuperHeroe)) {
+
+    } else {
+        porfavorIngresasolonumeros.innerHTML = `<div style="display: flex; align-items: center;" class="mt-3">
+    <img style="width: 60px;" src="./assets/img/error.png" alt="">
+    <p>Ingresaste algo mal</p>
+    </div>`
+    }
+
 
     $.ajax({
         type: "GET",
         url: `https://www.superheroapi.com/api.php/86f063e94127d73307ffac340ea71f39/${capturaSuperHeroe}`,
         dataType: "json",
         success: function (response) {
-            console.log(response)
 
             let cajaImagen = document.querySelector('#cajaImagen')
             let cajaNombre = document.querySelector('#cajaNombre')
@@ -36,21 +54,21 @@ function buscarSuperHeroe() {
 
             var chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: true,
-                backgroundColor: "rgba(255, 255, 255, 0.6)",
+                backgroundColor: "rgba(255, 255, 255, 0.0)",
                 title: {
                     text: response.name
                 },
                 data: [{
                     type: "pie",
                     startAngle: 240,
-                    yValueFormatString: "##0.00\"%\"",
+                    yValueFormatString: "##0.00\"",
                     indexLabel: "{label} {y}",
                     dataPoints: [
                         { y: response.powerstats.intelligence, label: Object.keys(response.powerstats)[0] },
                         { y: response.powerstats.strength, label: Object.keys(response.powerstats)[1] },
                         { y: response.powerstats.speed, label: Object.keys(response.powerstats)[2] },
                         { y: response.powerstats.durability, label: Object.keys(response.powerstats)[3] },
-                        { y: response.powerstats.power, label: Object.keys(response.powerstats)[4] },   
+                        { y: response.powerstats.power, label: Object.keys(response.powerstats)[4] },
                         { y: response.powerstats.combat, label: Object.keys(response.powerstats)[5] }
                     ]
                 }]
@@ -64,6 +82,19 @@ function buscarSuperHeroe() {
 
 }
 
+
+/* function ocultarError(){
+
+    if(porfavorIngresasolonumeros.style.visibility == 'hidden'){
+        porfavorIngresasolonumeros.style.visibility = 'visible';
+    }else{
+        porfavorIngresasolonumeros.style.visibility = 'hidden';
+    }
+} */
+
+function mostrar(){
+    contenidoTotal.style.display = 'block';
+}
 botonSuperHeroe.addEventListener('click', buscarSuperHeroe);
 
 cajaSuperHeroe.addEventListener('keydown', function (event) {
