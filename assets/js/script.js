@@ -1,3 +1,5 @@
+document.addEventListener('DOMContentLoaded', function() {
+
 let cajaSuperHeroe = document.querySelector('#caja')
 let botonSuperHeroe = document.querySelector('#button')
 let expresionRegular = /^[1-9]\d*$/;
@@ -9,7 +11,7 @@ function buscarSuperHeroe() {
     let capturaSuperHeroe = cajaSuperHeroe.value
     if (capturaSuperHeroe > 731) {
         porfavorIngresasolonumeros.innerHTML =
-    `<div style="display: flex; align-items: center;" class="mt-3">
+            `<div style="display: flex; align-items: center;" class="mt-3">
     <img style="width: 60px;" src="./assets/img/error.png" alt="">
     <p>Error: Superaste el rango, no existen más SuperHeroes</p>
     </div>`
@@ -22,7 +24,6 @@ function buscarSuperHeroe() {
     <p>Ingresaste algo mal</p>
     </div>`
     }
-
 
     $.ajax({
         type: "GET",
@@ -92,13 +93,27 @@ function buscarSuperHeroe() {
     }
 } */
 
-function mostrar(){
+function mostrar() {
     contenidoTotal.style.display = 'block';
 }
-botonSuperHeroe.addEventListener('click', buscarSuperHeroe);
 
 cajaSuperHeroe.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
+        event.preventDefault();
         buscarSuperHeroe();
+        mostrar();
     }
+});
+
+
+
+botonSuperHeroe.addEventListener('click', buscarSuperHeroe);
+if (botonSuperHeroe) {
+    botonSuperHeroe.addEventListener('click', mostrar);
+}
+
+
+$(document).ready(function () {
+    $('.loader').fadeOut(1000);  /*FadeOut after page loaded*/
+});
 });

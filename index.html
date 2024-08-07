@@ -15,7 +15,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/98.css@0.1.4/build/98.css" />
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Document</title>
+    <title>El mejor buscador de Super Heroes "Super Heroes 2000"</title>
 </head>
 
 <body>
@@ -23,31 +23,54 @@
 
     <video playsinline autoplay muted loop poster="./assets/img/vaporwave.gif" id="bgvid">
         <source src="./assets/img/SynthwaveCity.mp4" type="video/mp4">
-      </video>
-
+    </video>
+    <div class="loader"></div>
 
     <div class="container">
-        <div class="row">
-            <div class="d-grid gap-2 col-md-3 col-9 mx-auto">
-                <div class="window" style="margin: 32px; width: 250px">
-                    <div class="title-bar">
-                        <div class="title-bar-text">
-                            Super Heroes 2000
+        <div class="row align-items-center">
+
+                <div class="col-md-4 col-10 mx-auto">
+                    <div class="window" style="margin: 32px; width: 250px">
+                        <div class="title-bar">
+                            <div class="title-bar-text">Reproductor Musical</div>
+                            <div class="title-bar-controls">
+                                <button aria-label="Minimize"></button>
+                                <button aria-label="Maximize"></button>
+                                <button aria-label="Close"></button>
+                            </div>
                         </div>
-                        <div class="title-bar-controls">
-                            <button aria-label="Minimize"></button>
-                            <button aria-label="Maximize"></button>
-                            <button aria-label="Close"></button>
+                        <div class="window-body">
+                            <div class="win95-player">
+                                <audio controls src="./audio/driveMeWild-VA-11HALL-A-SecondRoundOST.mp3"></audio>
+                            </div>
                         </div>
                     </div>
-                    <div class="window-body">
-                        <p>Busca tu Super Heroe y/o Villano</p>
-                        <section class="field-row" style="justify-content: flex-end">
-                            <input type="text" class="form-control" id="caja" placeholder="Ingresa Un numero">
-                            <button type="button" id="button" onclick="mostrar(), ocultarError();">Buscar</button>
-                        </section>
-                        <div>
-                            <p id="error" style="color: red; font-size: 0.8rem;"></p></div>
+                </div>
+
+
+
+                <div class="col-md-4 col-10 mx-auto">
+                    <div class="window" style="margin: 32px; width: 250px">
+                        <div class="title-bar">
+                            <div class="title-bar-text">
+                                Super Heroes 2000
+                            </div>
+                            <div class="title-bar-controls">
+                                <button aria-label="Minimize"></button>
+                                <button aria-label="Maximize"></button>
+                                <button aria-label="Close"></button>
+                            </div>
+                        </div>
+                        <div class="window-body">
+                            <p>Busca tu Super Heroe y/o Villano</p>
+                            <section class="field-row" style="justify-content: flex-end">
+                                <input type="text" class="form-control" id="caja" placeholder="Ingresa Un numero">
+                                <button type="button" id="button">Buscar</button>
+                            </section>
+                            <div>
+                                <p id="error" style="color: red; font-size: 0.8rem;"></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -92,23 +115,20 @@
                 </div>
                 <div class="window col-md-5 mx-auto mt-3" style="width: 400px">
                     <div class="title-bar">
-                      <div class="title-bar-text">Grafico</div>
-                      <div class="title-bar-controls">
-                        <button aria-label="Minimize"></button>
-                        <button aria-label="Maximize"></button>
-                        <button aria-label="Close"></button>
-                      </div>
+                        <div class="title-bar-text">Grafico</div>
+                        <div class="title-bar-controls">
+                            <button aria-label="Minimize"></button>
+                            <button aria-label="Maximize"></button>
+                            <button aria-label="Close"></button>
+                        </div>
                     </div>
                     <div class="window-body">
                         <div id="chartContainer" style="height: 300px; width: 100%;"></div>
                     </div>
-                  </div>
+                </div>
             </div>
         </div>
     </div>
-
-
-
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
